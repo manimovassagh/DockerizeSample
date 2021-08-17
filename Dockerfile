@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node
 
 WORKDIR /app
 
@@ -8,6 +8,11 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 80
 
-CMD [ "npm", "start" ]
+ENV MONGODB_USERNAME=root
+ENV MONGODB_PASSWORD=secret
+ENV MONGODB_URL=mongodb
+ENV MONGODB_NAME=goals-dev
+
+CMD ["npm", "start"]
