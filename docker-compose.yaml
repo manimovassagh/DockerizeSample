@@ -1,21 +1,10 @@
-version: '3.8'
+version: "3"
 services:
-  backend:
-    build: ./backend
-    ports:
-      - '80:80'
+  stories:
+    build: .
     volumes:
-      - ./backend:/app
-      - /app/node_modules
-    env_file:
-      - ./env/backend.env
-  frontend:
-    build: ./frontend
+      - stories:/app/story
     ports:
-      - '3000:3000'
-    volumes:
-      - ./frontend/src:/app/src
-    stdin_open: true
-    tty: true
-    depends_on:
-      - backend
+      - 80:3000
+volumes:
+  stories: 
